@@ -1,0 +1,41 @@
+function obraz_wy=stud_ZmianaRozdzielczosci(obraz_we,okno_zm)
+obraz_we=double(obraz_we);
+obraz_wy=obraz_we;
+licznik2=0;
+tab=zeros(uint8(256/okno_zm)+1);
+for i=1:size(obraz_we,1)
+      if mod(i,okno_zm)==1
+      licznik2=licznik2+1;
+      end
+    licznik = 1;
+   
+for j=1:size(obraz_we,2)
+      tab(licznik2,licznik)=tab(licznik2,licznik)+obraz_wy(i,j);
+      if mod(j,okno_zm)==0
+         
+          licznik=licznik+1;
+      end
+       
+
+end
+end;
+tab2=tab/(okno_zm*okno_zm);
+
+licznik2=0;
+for i=1:size(obraz_we,1)
+      if mod(i,okno_zm)==1
+      licznik2=licznik2+1;
+      end
+    licznik = 1;
+   
+for j=1:size(obraz_we,2)
+      obraz_wy(i,j)=tab2(licznik2,licznik);
+      if mod(j,okno_zm)==0
+          licznik=licznik+1;
+      end
+         
+
+end
+end;
+
+obraz_wy=uint8(obraz_wy);
