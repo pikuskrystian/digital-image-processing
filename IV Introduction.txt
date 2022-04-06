@@ -1,0 +1,27 @@
+%6
+imfinfo("lena.jpg");
+imfinfo("lena.bmp");
+%9
+figure;
+image(imread('lena.bmp'));
+figure;
+image(imread('lena.jpg'));
+%10
+RGB = imread('lena.jpg');
+I = rgb2gray(RGB);
+figure;
+imshow(I)
+%11
+imwrite(I,'lena_gray.bmp')
+
+%12
+arr3d =imread('lena.bmp') ;
+arr2d=rgb2gray(arr3d);
+figure;
+mesh(arr2d)
+colormap('gray');
+%13
+figure;
+plot(arr2d(10,:))
+figure;
+plot(arr2d(:,10))
