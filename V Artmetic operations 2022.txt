@@ -1,0 +1,51 @@
+lena = imread('lena.bmp');
+jet = imread('jet.bmp');
+suma= imadd(lena,jet);
+figure(1)
+imshow(suma);
+suma= imadd(lena,jet,'uint16');
+figure(2)
+imshow(suma,[]);
+%Na rezultat operacji według mnie niekorzystnie wpływa fakt że większość
+% pikseli ma wysokie wartości bliskie 255. Wykorzystanie typu unit16 spowodowało
+%zwiększenie ostrości elementów obu obrazów.
+
+figure(3)
+img1 = imlincomb(2.8,lena);
+imshow(img1);
+figure(4);
+img2 = imlincomb(1.4,jet);
+imshow(img2);
+
+odejmowanie = imsubtract(lena,jet);
+figure(5);
+imshow(odejmowanie);
+lena16 = int16(lena);
+jet16=int16(jet);
+odejmowanie = imsubtract(lena16,jet16);
+figure(6);
+imshow(odejmowanie,[]);
+% Na rezultat operacji według mnie niekorzystnie wpływa fakt że większość
+% pikseli zostaje wyzerowana.
+% Zmiana typu poprawia wynik odejmowania ponieważ różnice między pikselami
+% są lepiej uwidocznione po przeskalowaniu.
+figure(7);
+imshow(imabsdiff(lena,jet));
+
+figure(8);
+mnozenie = immultiply(lena,jet);
+imshow(mnozenie);
+% Z wyniku można wywnioskować jedynie, że wszystkie piksele po przemnożeniu
+% przekroczyły zakres 255
+figure(9);
+przezstala= immultiply(a,0.3);
+imshow(przezstala);
+maska = imread('kolo.bmp');
+figure(10);
+maska= boolean(maska);
+przezmaske = immultiply(a,maska);
+imshow(przezmaske);
+
+figure(11);
+negatyw=imcomplement(lena);
+imshow(negatyw);
