@@ -1,0 +1,23 @@
+obraz_we=double(obraz_we);
+obraz_wy=obraz_we;
+a=prog_dolny+round((prog_gorny-prog_dolny)/2);
+for i=1:size(obraz_we,1)
+    if obraz_we(i,1)<a
+    obraz_wy(i,1)=0;
+    else
+    obraz_wy(i,1)=255;
+    end
+end
+for i=1:size(obraz_we,1)
+for j=2:size(obraz_we,2)
+    if obraz_we(i,j)<= prog_dolny
+        obraz_wy(i,j)=0;
+    elseif obraz_we(i,j) >prog_gorny
+        obraz_wy(i,j)=255;   
+    else
+        obraz_wy(i,j)=obraz_wy(i,j-1);
+    end
+end
+end
+
+obraz_wy=uint8(obraz_wy);
