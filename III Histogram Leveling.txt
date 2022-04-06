@@ -1,0 +1,24 @@
+hist=zeros(2,256);
+
+for i=1:size(ObrazWejsciowy,1)
+  for j=1:size(ObrazWejsciowy,2)
+      tmp=round(ObrazWejsciowy(i,j));
+      hist(1,tmp+1)=hist(1,tmp+1)+1;
+  end
+end
+
+for j2=1:256
+  hist(2,j2)=j2-1;
+end
+for i2=2:256
+    hist(1,i2)=hist(1,i2)+hist(1,i2-1);
+end
+hist(1,:)=hist(1,:)/hist(1,256);
+hist(1,:)=round(hist(1,:)*255);
+ObrazWyjsciowy=ObrazWejsciowy;
+for i=1:size(ObrazWejsciowy,1)
+for j=1:size(ObrazWejsciowy,2)
+        ObrazWyjsciowy(i,j)=hist(1,ObrazWejsciowy(i,j));
+end
+end
+ObrazWyjsciowy=uint8(ObrazWyjsciowy);

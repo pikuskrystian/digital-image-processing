@@ -1,0 +1,14 @@
+hist=zeros(2,256);
+
+for i=1:size(obraz_we,1)
+  for j=1:size(obraz_we,2)
+      tmp=round(obraz_we(i,j));
+      hist(1,tmp+1)=hist(1,tmp+1)+1;
+  end
+end
+
+for j2=1:256
+  hist(2,j2)=j2-1;
+end
+
+histogram=hist;
