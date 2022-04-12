@@ -1,0 +1,22 @@
+close all;
+clear all;
+rice=imread('rice.png');
+[X Y]=size(rice);
+rice2=zeros(256);
+W2=15;
+for i = 1:X
+    for j = 1:Y
+    m=meanLT(i,j,W2,rice,X,Y);
+    t=m*(1+0.15*(stddevLT(i,j,W2,rice,m,X,Y)/128 -1));
+    if t>rice(i,j)
+        rice2(i,j)=0;
+    else
+        rice2(i,j)=255;
+    end
+    end
+end
+figure(1)
+imshow(rice)
+figure(2)
+imshow(rice2)
+%im wiekszy rozmiar okna tym dokladniejsza binaryzacja
