@@ -1,0 +1,35 @@
+close all;
+clear all;
+
+fale=imread('dwiefale.bmp');
+Ffale=fft2(fale)
+figure(1)
+subplot(2,2,1)
+imshow(Ffale);
+subplot(2,2,2)
+imshow(fftshift(fft2(fale)));
+subplot(2,2,3)
+imshow(abs(fft2(fale)))
+subplot(2,2,4)
+imshow(angle(fft2(fale)))
+
+F1= fft(fale,[],1);
+F2=fft(F1,[],2);
+figure(2)
+subplot(2,2,1)
+imshow(Ffale);
+subplot(2,2,2)
+imshow(F2);
+subplot(2,2,3)
+imshow(abs(Ffale)+abs(F2));
+F1= fft(fale,[],2);
+F2=fft(F1,[],1);
+figure(3)
+subplot(2,2,1)
+imshow(Ffale);
+subplot(2,2,2)
+imshow(F2);
+subplot(2,2,3)
+imshow(abs(Ffale)+abs(F2));
+
+%nie zauważyłem różnic

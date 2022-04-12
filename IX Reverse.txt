@@ -1,0 +1,12 @@
+close all;
+clear all;
+kolo=imread('kolo.bmp');
+koloFshift=fftshift(fft2(kolo));
+koloshift=ifftshift(koloFshift);
+koloifft=ifft2(koloshift);
+
+figure(1)
+subplot(2,2,1)
+imshow(kolo)
+subplot(2,2,2)
+imshow(koloifft)

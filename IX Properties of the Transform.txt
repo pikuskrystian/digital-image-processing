@@ -1,0 +1,29 @@
+close all;
+clear all;
+
+kwadrat=imread('kwadrat.bmp');
+kwadratT=imread('kwadratT.bmp');
+kwadrat45=imread('kwadrat45.bmp');
+kwadratS=imread('kwadratS.bmp');
+kwadratKL=imread('kwadratKL.bmp');
+figure(1)
+subplot(5,2,1)
+imshow(abs(fft2(kwadrat)));
+subplot(5,2,2)
+imshow(angle(fft2(kwadrat)))
+subplot(5,2,3)
+imshow(abs(fft2(kwadratT)))
+subplot(5,2,4)
+imshow(angle(fft2(kwadratT)))
+subplot(5,2,5)
+imshow(abs(fft2(kwadrat45)))
+subplot(5,2,6)
+imshow(angle(fft2(kwadrat45)))
+subplot(5,2,7)
+imshow(abs(fft2(kwadratS)))
+subplot(5,2,8)
+imshow(angle(fft2(kwadratS)))
+subplot(5,2,9)
+imshow(abs(fft2(kwadratKL)))
+subplot(5,2,10)
+imshow(angle(fft2(kwadratKL)))
