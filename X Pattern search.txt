@@ -1,0 +1,11 @@
+close all;
+clear all;
+literki=imread('literki.bmp');
+wzor=imread('wzorA.bmp');
+literkiF=fft2(literki);
+wzorAF = fft2(rot90(wzor,2),256,256);
+
+mnozenie=literkiF.*wzorAF;
+mnozenieifft=ifft2(mnozenie);
+figure(1)
+imshow(imtophat(mnozenieifft,strel('square',3)));

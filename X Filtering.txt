@@ -1,0 +1,32 @@
+close all;
+clear all;
+
+lena=imread('lena.bmp');
+lenaF=fftshift(fft2(lena));
+figure(1)
+subplot(2,2,1)
+imshow(lena);
+subplot(2,2,2)
+imshow(abs(lenaF));
+subplot(2,2,3)
+imshow(angle(lenaF));
+
+[f1,f2] = freqspace(512,'meshgrid');
+Hd = ones(512);
+r = sqrt(f1.^2 + f2.^2);
+Hd((r<0.1)) = 0;
+
+poFiltracji=lenaF.*Hd;
+lenaIF=ifftshift(poFiltracji);
+lenaifft=ifft2(lenaIF);
+figure(2)
+imshow(lenaifft)
+
+h = fwind1(Hd,hanning(21));
+[H f1 f2] = freqz2(h,512,512);
+
+poFiltracji=lenaF.*h;
+lenaIF=ifftshift(poFiltracji);
+lenaifft=ifft2(lenaIF);
+figure(3)
+imshow(lenaifft)
