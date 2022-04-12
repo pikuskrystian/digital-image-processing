@@ -1,0 +1,68 @@
+clear all;
+close all;
+coins = imread('coins.png');
+figure(1)
+subplot(2,2,1)
+imshow(coins)
+subplot(2,2,2)
+imhist(coins)
+bincoins=im2bw(coins,0.5);
+subplot(2,2,3:4)
+imshow(bincoins)
+
+figura = imread('figura.tif');
+figure(2)
+subplot(2,2,1)
+imhist(figura)
+figura2 = imread('figura2.tif');
+subplot(2,2,2)
+imhist(figura2)
+figura3 = imread('figura3.tif');
+subplot(2,2,3)
+imhist(figura3)
+figura4 = imread('figura4.tif');
+subplot(2,2,4)
+imhist(figura4);
+%ciezko jednoznacznie wyznaczyc progi binaryzacji
+
+prog=graythresh(coins);
+prog1=clusterKittler(coins);
+prog2=entropyYen(coins);
+figure(3)
+subplot(2,3,1)
+imshow(coins)
+title('obraz startowy');
+subplot(2,3,2)
+imhist(coins)
+title('histogram');
+subplot(2,3,3)
+imshow(im2bw(coins,prog));
+title(['metoda otsu, ',num2str(prog)]);
+subplot(2,3,4)
+imshow(im2bw(coins,prog1/255));
+title(['metoda kittlera, ',num2str(prog1/255)]);
+subplot(2,3,5)
+imshow(im2bw(coins,prog2/255));
+title(['metoda yena, ',num2str(prog2/255)]);
+
+rice=imread('rice.png')
+figure(4)
+prog=graythresh(rice);
+prog1=clusterKittler(rice);
+prog2=entropyYen(rice);
+
+subplot(2,3,1)
+imshow(rice)
+title('obraz startowy')
+subplot(2,3,2)
+imhist(rice)
+title('histogram')
+subplot(2,3,3)
+imshow(im2bw(rice,prog))
+title(['metoda otsu, ',num2str(prog)])
+subplot(2,3,4)
+imshow(im2bw(rice,prog1/255))
+title(['metoda kittlera, ',num2str(prog1/255)])
+subplot(2,3,5)
+imshow(im2bw(rice,prog2/255))
+title(['metoda yena, ',num2str(prog2/255)])
