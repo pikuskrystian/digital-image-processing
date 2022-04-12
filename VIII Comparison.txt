@@ -1,0 +1,53 @@
+close all;
+clear all;
+
+l1 = imread('lenaSzum.bmp');
+l2=uint8(conv2(l1,fspecial('average',3),'same'));
+l2m=medfilt2(l1);
+figure(1)
+subplot(2,3,1)
+imshow(l1);
+title("obraz startowy")
+
+subplot(2,3,2);
+imshow(l2);
+title("obraz po filtracji")
+
+subplot(2,3,3);
+imshow(imabsdiff(l1,l2),[]);
+title("różnica")
+
+subplot(2,3,4);
+imshow(l2m);
+title("obraz po filtracji medianowej")
+
+subplot(2,3,5);
+imshow(imabsdiff(l1,l2m),[]);
+title("różnica")
+
+%filtracja medianowa dobrze usuwa zakłócenia impulsowe
+
+l1 = imread('lena.bmp');
+l2=uint8(conv2(l1,fspecial('average',3),'same'));
+l2m=medfilt2(l1);
+figure(2)
+subplot(2,3,1)
+imshow(l1);
+title("obraz startowy")
+
+subplot(2,3,2);
+imshow(l2);
+title("obraz po filtracji")
+
+subplot(2,3,3);
+imshow(imabsdiff(l1,l2),[]);
+title("różnica")
+
+subplot(2,3,4);
+imshow(l2m);
+title("obraz po filtracji medianowej")
+
+subplot(2,3,5);
+imshow(imabsdiff(l1,l2m),[]);
+title("różnica")
+%filtracja uśredniająca bardziej wpływa na ostrość krawędzi
