@@ -1,0 +1,32 @@
+lena = imread('lena.bmp'); //wczytuje obraz lena
+hsvlena=rgb2hsv(lena); 
+ycbcrlena = rgb2ycbcr(lena)
+H = hsvlena(:,:,1); S = hsvlena(:,:,2); V = hsvlena(:,:,3);
+figure;
+subplot(2,2,1);
+imshow(hsvlena);
+title('Oryginal');
+subplot(2,2,2);
+imshow(H);
+title('H');
+subplot(2,2,3);
+imshow(S);
+title('S');
+subplot(2,2,4);
+imshow(V);
+title('V');
+
+Y = ycbcrlena(:,:,1); Cb = ycbcrlena(:,:,2); Cr = ycbcrlena(:,:,3);
+figure;
+subplot(2,2,1);
+imshow(ycbcrlena);
+title('Oryginal');
+subplot(2,2,2);
+imshow(Y);
+title('Y');
+subplot(2,2,3);
+imshow(Cb);
+title('Cb');
+subplot(2,2,4);
+imshow(Cr);
+title('Cr');
