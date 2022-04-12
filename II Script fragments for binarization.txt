@@ -1,0 +1,33 @@
+%dolnoprogowa
+obraz_we=double(obraz_we);
+obraz_we=obraz_we-prog_dolny;
+obraz_we=obraz_we-0.5;
+obraz_we=sign(obraz_we);
+obraz_wy=obraz_we*127.5+127.5;
+
+
+%gornoprogowa
+obraz_we=double(obraz_we);
+obraz_wy=obraz_we;
+for i=1:size(obraz_we,1)
+for j=1:size(obraz_we,2)
+    if obraz_we(i,j) >=prog_gorny
+        obraz_wy(i,j)=0;
+    else
+        obraz_wy(i,j)=255;
+    end
+end
+end
+
+%dwuprogowa
+obraz_we=double(obraz_we);
+obraz_wy=obraz_we;
+for i=1:size(obraz_we,1)
+for j=1:size(obraz_we,2)
+    if obraz_we(i,j) >prog_gorny || obraz_we(i,j)<= prog_dolny
+        obraz_wy(i,j)=0;
+    else
+        obraz_wy(i,j)=255;
+    end
+end
+end
